@@ -50,15 +50,19 @@ export default {
     name:"urls",
     data(){
         return {
-            urls:[]
+            urls:[],
+            timer: '',
+            token: localStorage.getItem('user-token') || ''
         }
     },
-    mounted(){
-        this.getUrls()
+    created () {
+      this.getUrls()
+      this.timer = setInterval(this.getUrls, 3000);
     },
     methods:{
         async getUrls(){
-            await this.axios.get('/api/url').then(response=>{
+            await this.axios.get('/api/url', { headers: {"Authorization" : `Bearer ${this.token}`} })
+            .then(response=>{
                 this.urls = response.data
             }).catch(error=>{
                 console.log(error)
@@ -67,13 +71,20 @@ export default {
         },
         deleteUrl(id){
             if(confirm("Tem certeza que deseja excluir essa URL ?")){
-                this.axios.delete(`/api/url/${id}`).then(response=>{
+                this.axios.delete(`/api/url/${id}`, { headers: {"Authorization" : `Bearer ${this.token}`} })
+                .then(response=>{
                     this.getUrls()
                 }).catch(error=>{
                     console.log(error)
                 })
             }
+        },
+        cancelReload () {
+            clearInterval(this.timer);
         }
+    },
+    beforeDestroy () {
+      this.cancelReload();
     }
 }
 </script>

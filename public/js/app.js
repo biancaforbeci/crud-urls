@@ -2084,7 +2084,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      authUser: window.authUser
+    };
+  }
+});
 
 /***/ }),
 
@@ -19755,14 +19761,16 @@ var render = function() {
                   [_vm._v("Home")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-item nav-link",
-                    attrs: { "exact-active-class": "active", to: "/url" }
-                  },
-                  [_vm._v("URL'S")]
-                )
+                _vm.authUser
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-item nav-link",
+                        attrs: { "exact-active-class": "active", to: "/url" }
+                      },
+                      [_vm._v("URL'S")]
+                    )
+                  : _vm._e()
               ],
               1
             )

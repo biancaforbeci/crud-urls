@@ -17,8 +17,8 @@ class CreateUrlsTable extends Migration
           $table->bigIncrements('id');
           $table->string('link');
           $table->text('description');
-          $table->smallInteger('status_code');
-          $table->text('response_http');
+          $table->smallInteger('status_code')->nullable(true);
+          $table->text('response_http')->nullable(true);
           $table->unsignedBigInteger('user_id');
           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           $table->timestamps();

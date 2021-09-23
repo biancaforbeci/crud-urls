@@ -44,7 +44,9 @@ export default {
     },
     methods:{
         async create(){
-            await this.axios.post('/api/url',this.url).then(response=>{
+            let token = localStorage.getItem('user-token');
+            await this.axios.post('/api/url',this.url, { headers: {"Authorization" : `Bearer ${token}`} })
+            .then(response=>{
                 this.$router.push({name:"urlList"})
             }).catch(error=>{
                 console.log(error)

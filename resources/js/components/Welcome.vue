@@ -45,7 +45,14 @@ data(){
 
      login_user(){
 
-      axios.post('/api/login',this.form).then((resp) =>{
+        axios.post('/api/login',this.form).then((resp) =>{
+
+        if (resp.data.status == "error") {
+          console.log("Acesso negado");
+          return;
+        }
+         const token = resp.data.response.access_token;
+         localStorage.setItem('user-token', token)
          this.$router.push({name:"urlList"})
       })
       .catch((e)=>{

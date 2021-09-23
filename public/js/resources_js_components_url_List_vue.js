@@ -81,11 +81,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   name: "urls",
   data: function data() {
     return {
-      urls: []
+      urls: [],
+      timer: '',
+      token: localStorage.getItem('user-token') || ''
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     this.getUrls();
+    this.timer = setInterval(this.getUrls, 3000);
   },
   methods: {
     getUrls: function getUrls() {
@@ -97,7 +100,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.axios.get('/api/url').then(function (response) {
+                return _this.axios.get('/api/url', {
+                  headers: {
+                    "Authorization": "Bearer ".concat(_this.token)
+                  }
+                }).then(function (response) {
                   _this.urls = response.data;
                 })["catch"](function (error) {
                   console.log(error);
@@ -116,13 +123,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       if (confirm("Tem certeza que deseja excluir essa URL ?")) {
-        this.axios["delete"]("/api/url/".concat(id)).then(function (response) {
+        this.axios["delete"]("/api/url/".concat(id), {
+          headers: {
+            "Authorization": "Bearer ".concat(this.token)
+          }
+        }).then(function (response) {
           _this2.getUrls();
         })["catch"](function (error) {
           console.log(error);
         });
       }
+    },
+    cancelReload: function cancelReload() {
+      clearInterval(this.timer);
     }
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.cancelReload();
   }
 });
 

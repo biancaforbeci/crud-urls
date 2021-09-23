@@ -11,13 +11,6 @@ use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
-
-    private $apiToken;
-    public function __construct() {
-      $this->apiToken = uniqid(base64_encode(Str::random(40)));
-    }
-
-
   /**
    *
    * @return \Illuminate\Http\Response
@@ -27,10 +20,11 @@ class AuthController extends Controller
     if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
       $user = Auth::user();
       $success['name'] =  $user->name;
+      $success['access_token'] = auth()->user()->createToken('authToken')->accessToken;
 
       return response()->json([
         'status' => 'success',
-        'data' => $success
+        'response' => $success
       ]);
     } else {
       return response()->json([

@@ -55,6 +55,14 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/api/login', this.form).then(function (resp) {
+        if (resp.data.status == "error") {
+          console.log("Acesso negado");
+          return;
+        }
+
+        var token = resp.data.response.access_token;
+        localStorage.setItem('user-token', token);
+
         _this.$router.push({
           name: "urlList"
         });

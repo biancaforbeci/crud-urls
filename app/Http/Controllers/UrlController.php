@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Url;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UrlController extends Controller
 {
@@ -14,7 +16,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-       $urls = Url::all(['id','link','description','status_code', 'response_http', 'user_id']);
+       $urls = DB::table('urls')->where('user_id', '=', Auth::id())->get();
        return response()->json($urls);
     }
 
@@ -24,9 +26,16 @@ class UrlController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Url $url)
     {
-      $url = Url::create($request->post());
+      $request->validate([
+        'link' => 'required|url'
+      ]);
+
+      $url->link = $request->link;
+      $url->description = $request->description;
+      $url->user_id = Auth::id();
+      $url->save();
       return response()->json([
           'message'=>'Url Added Successfully!!',
           'url'=>$url

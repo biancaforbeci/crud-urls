@@ -6,7 +6,7 @@
                 <div class="collapse navbar-collapse">
                     <div class="navbar-nav">
                         <router-link exact-active-class="active" to="/" class="nav-item nav-link">Home</router-link>
-                        <router-link exact-active-class="active" to="/url" class="nav-item nav-link">URL'S</router-link>
+                        <router-link exact-active-class="active" to="/url" class="nav-item nav-link" v-if="authUser">URL'S</router-link>
                     </div>
                 </div>
             </div>
@@ -18,5 +18,11 @@
 </template>
 
 <script>
-    export default {}
+  export default {
+      data() {
+          return {
+               authUser: window.authUser
+          }
+      }
+  }
 </script>

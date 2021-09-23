@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('url',App\Http\Controllers\UrlController::class)->only(['index','store','show','update','destroy']);
+Route::middleware('auth:api')->group(function () {
+  Route::resource('url',App\Http\Controllers\UrlController::class)->only(['index','store','show','update','destroy']);
+});
 Route::post('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');

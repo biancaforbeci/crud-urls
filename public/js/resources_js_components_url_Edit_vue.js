@@ -82,12 +82,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var token;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
-                return _this.axios.get("/api/url/".concat(_this.$route.params.id)).then(function (response) {
+                token = localStorage.getItem('user-token');
+                _context.next = 3;
+                return _this.axios.get("/api/url/".concat(_this.$route.params.id), {
+                  headers: {
+                    "Authorization": "Bearer ".concat(token)
+                  }
+                }).then(function (response) {
                   var _response$data = response.data,
                       link = _response$data.link,
                       description = _response$data.description;
@@ -97,7 +103,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log(error);
                 });
 
-              case 2:
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -109,12 +115,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var token;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return _this2.axios.post("/api/url/".concat(_this2.$route.params.id), _this2.url).then(function (response) {
+                token = localStorage.getItem('user-token');
+                _context2.next = 3;
+                return _this2.axios.post("/api/url/".concat(_this2.$route.params.id), _this2.url, {
+                  headers: {
+                    "Authorization": "Bearer ".concat(token)
+                  }
+                }).then(function (response) {
                   _this2.$router.push({
                     name: "urlList"
                   });
@@ -122,7 +134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   console.log(error);
                 });
 
-              case 2:
+              case 3:
               case "end":
                 return _context2.stop();
             }
@@ -1007,7 +1019,7 @@ var render = function() {
               _c("div", { staticClass: "row" }, [
                 _c("div", { staticClass: "col-12 mb-2" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Title")]),
+                    _c("label", [_vm._v("Link")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -1035,7 +1047,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "col-12 mb-2" }, [
                   _c("div", { staticClass: "form-group" }, [
-                    _c("label", [_vm._v("Description")]),
+                    _c("label", [_vm._v("Descrição")]),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -1087,7 +1099,7 @@ var staticRenderFns = [
       _c(
         "button",
         { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Update")]
+        [_vm._v("Atualizar")]
       )
     ])
   }
