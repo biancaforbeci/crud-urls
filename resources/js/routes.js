@@ -2,6 +2,7 @@ const Welcome = () => import('./components/Welcome.vue')
 const UrlList = () => import('./components/url/List.vue')
 const UrlCreate = () => import('./components/url/Add.vue')
 const UrlEdit = () => import('./components/url/Edit.vue')
+const Response = () => import('./components/url/Response.vue')
 
 export const routes = [
     {
@@ -23,5 +24,10 @@ export const routes = [
         name: 'urlAdd',
         path: '/url/add',
         component: UrlCreate
+    },
+    {
+        name: 'response',
+        path: '/url/:id/responses',
+        component: Response
     }
 ]

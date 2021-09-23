@@ -9,6 +9,8 @@ class ResponseUrl extends Model
 {
     use HasFactory;
 
+    protected $table = 'response_urls';
+
     protected $fillable = ['status_code','response_http', 'html', 'url_id'];
 
     public function url() {

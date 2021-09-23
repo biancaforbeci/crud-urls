@@ -2192,6 +2192,10 @@ var UrlEdit = function UrlEdit() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_url_Edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/url/Edit.vue */ "./resources/js/components/url/Edit.vue"));
 };
 
+var Response = function Response() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_url_Response_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/url/Response.vue */ "./resources/js/components/url/Response.vue"));
+};
+
 var routes = [{
   name: 'home',
   path: '/',
@@ -2208,6 +2212,10 @@ var routes = [{
   name: 'urlAdd',
   path: '/url/add',
   component: UrlCreate
+}, {
+  name: 'response',
+  path: '/url/:id/responses',
+  component: Response
 }];
 
 /***/ }),
@@ -35229,7 +35237,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\Users\\\\biafo\\\\
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_Welcome_vue":1,"resources_js_components_url_List_vue":1,"resources_js_components_url_Add_vue":1,"resources_js_components_url_Edit_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_Welcome_vue":1,"resources_js_components_url_List_vue":1,"resources_js_components_url_Add_vue":1,"resources_js_components_url_Edit_vue":1,"resources_js_components_url_Response_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

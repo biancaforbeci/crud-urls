@@ -14,19 +14,16 @@
                             <thead>
                                 <tr>
                                     <th>Link</th>
-                                    <th>Status</th>
                                     <th>Descrição</th>
-                                    <th>Reponse</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody v-if="urls.length > 0">
                                 <tr v-for="(url,key) in urls" :key="key">
                                     <td>{{ url.link }}</td>
-                                    <td>{{ url.status_code }}</td>
                                     <td>{{ url.description }}</td>
-                                    <td>{{ url.response_http }}</td>
                                     <td>
+                                        <router-link :to='{name:"response",params:{id:url.id}}' class="btn btn-success">Responses</router-link>
                                         <router-link :to='{name:"urlEdit",params:{id:url.id}}' class="btn btn-success">Edit</router-link>
                                         <button type="button" @click="deleteUrl(url.id)" class="btn btn-danger">Delete</button>
                                     </td>
@@ -56,8 +53,7 @@ export default {
         }
     },
     created () {
-      this.getUrls()
-      this.timer = setInterval(this.getUrls, 3000);
+      this.getUrls()      
     },
     methods:{
         async getUrls(){
@@ -79,12 +75,6 @@ export default {
                 })
             }
         },
-        cancelReload () {
-            clearInterval(this.timer);
-        }
-    },
-    beforeDestroy () {
-      this.cancelReload();
     }
 }
 </script>
