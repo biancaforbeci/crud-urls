@@ -15,8 +15,12 @@ class CreateUrlsTable extends Migration
     {
         Schema::create('urls', function (Blueprint $table) {
           $table->bigIncrements('id');
-          $table->string('title');
+          $table->string('link');
           $table->text('description');
+          $table->smallInteger('status_code');
+          $table->text('response_http');
+          $table->unsignedBigInteger('user_id');
+          $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
           $table->timestamps();
         });
     }

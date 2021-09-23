@@ -14,17 +14,8 @@ class UrlController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+       $urls = Url::all(['id','link','description','status_code', 'response_http', 'user_id']);
+       return response()->json($urls);
     }
 
     /**
@@ -35,7 +26,11 @@ class UrlController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $url = Url::create($request->post());
+      return response()->json([
+          'message'=>'Url Added Successfully!!',
+          'url'=>$url
+      ]);
     }
 
     /**
@@ -46,18 +41,7 @@ class UrlController extends Controller
      */
     public function show(Url $url)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Url  $url
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Url $url)
-    {
-        //
+        return response()->json($url);
     }
 
     /**
@@ -69,7 +53,11 @@ class UrlController extends Controller
      */
     public function update(Request $request, Url $url)
     {
-        //
+      $url->fill($request->post())->save();
+      return response()->json([
+          'message'=>'Url Updated Successfully!!',
+          'url'=>$url
+      ]);
     }
 
     /**
@@ -80,6 +68,9 @@ class UrlController extends Controller
      */
     public function destroy(Url $url)
     {
-        //
+      $url->delete();
+      return response()->json([
+          'message'=>'Url Deleted Successfully!!'
+      ]);
     }
 }
