@@ -9,11 +9,13 @@ class Url extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['link','description', 'status_code', 'response_http', 'user_id'];
-
-  protected $casts = ['response_http' => 'array'];
+  protected $fillable = ['link','description', 'user_id'];
 
   public function user() {
       return $this->belongsTo('App\Models\User');
+  }
+
+  public function responseUrls() {
+      return $this->hasMany('App\Models\ResponseUrl');
   }
 }

@@ -29,7 +29,8 @@ class UrlController extends Controller
     public function store(Request $request, Url $url)
     {
       $request->validate([
-        'link' => 'required|url'
+        'link' => 'required|url',
+        'description' => 'required'
       ]);
 
       $url->link = $request->link;
