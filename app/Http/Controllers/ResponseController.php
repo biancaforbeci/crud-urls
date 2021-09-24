@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Jobs\ProcessUrl;
+use Illuminate\Support\Facades\Auth;
 
 class ResponseController extends Controller
 {
+   /**
+      * Display a listing of the resource.
+      *
+      * @return \Illuminate\Http\Response
+   */
+   public function index()
+   {
+     ProcessUrl::dispatch(Auth::id());
+   }
 
     /**
      * Display the specified resource.

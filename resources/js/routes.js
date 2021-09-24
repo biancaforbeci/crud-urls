@@ -29,5 +29,5 @@ export const routes = [
         name: 'response',
         path: '/url/:id/responses',
         component: Response
-    }
+    },
 ]

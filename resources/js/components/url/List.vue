@@ -53,7 +53,8 @@ export default {
         }
     },
     created () {
-      this.getUrls()      
+      this.getUrls()
+      this.getSendSqs()
     },
     methods:{
         async getUrls(){
@@ -74,6 +75,14 @@ export default {
                     console.log(error)
                 })
             }
+        },
+        getSendSqs(){
+              this.axios.get(`/api/response`, { headers: {"Authorization" : `Bearer ${this.token}`} })
+              .then(response=>{
+
+              }).catch(error=>{
+                console.log(error)
+              })
         },
     }
 }

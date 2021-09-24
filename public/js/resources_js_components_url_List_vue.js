@@ -85,6 +85,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     this.getUrls();
+    this.getSendSqs();
   },
   methods: {
     getUrls: function getUrls() {
@@ -129,6 +130,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           console.log(error);
         });
       }
+    },
+    getSendSqs: function getSendSqs() {
+      this.axios.get("/api/response", {
+        headers: {
+          "Authorization": "Bearer ".concat(this.token)
+        }
+      }).then(function (response) {})["catch"](function (error) {
+        console.log(error);
+      });
     }
   }
 });
