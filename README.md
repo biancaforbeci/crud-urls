@@ -11,7 +11,7 @@ Esse projeto consiste em cadastro, edição e delete de URLS, além de cadastrar
 
 -> Após isso, digite php artisan key:generate
 
--> Crie um banco de dados MySQL com nome brain
+-> Crie um banco de dados MySQL com nome brain e defina suas credenciais no .env
 
 -> Rode o migration: php artisan migrate:fresh --seed (Roda com seed junto para criar dados mockados já)
 
