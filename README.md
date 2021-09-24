@@ -1,64 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# CRUD URLS
+Esse projeto consiste em cadastro, edição e delete de URLS, além de cadastrar responses dessas urls rodando uma cron.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Como rodar
 
-## About Laravel
+-> Clone o projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-> Para testar em localhost utilizar por exemplo uma IDE para programar como o Atom ou Visual Studio Code, o XAMPP para testar no computador pessoal , o Composer como gerenciador de dependências para PHP e um prompt de comando para realizar o PHP ARTISAN SERVE e demais ajustes internos.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-> Entre no root do projeto e rode composer install
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-> Após isso, digite php artisan key:generate
 
-## Learning Laravel
+-> Crie um banco ded dados MySQL com nome brain
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-> Rode o migration: php artisan migrate:fresh --seed (Roda com seed junto para criar dados mockados já)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Testar
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-> Após realizar os passos acima deve-se rodar algum servidor como exemplo o XAMPP (pacote com os principais servidores) e no console rodar "php artisan serve"
 
-### Premium Partners
+-> Na AWS o link para acesso é: http://control-urls.sa-east-1.elasticbeanstalk.com/, somente a cron que não está habilitada em prod.
+   Ambiente em produção foi utilizado AWS Elastic Beanstalk, RDS com CI/CD integrado com integração com GitHub e acompanhamento de deploy com CodePipeline
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+Na página inicial pode-se logar com um usuário fake:
+    Ex: admin@gmail.com
+        senha: 123
+        
+## Imagens
 
-## Contributing
+Login
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+![login](https://user-images.githubusercontent.com/36732444/134714336-23d28f51-164a-43a1-b2cf-70e000e38b7e.JPG)
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Listagem de URLS
 
-## Security Vulnerabilities
+![listagem](https://user-images.githubusercontent.com/36732444/134714408-d0d73d03-7ee4-4536-ae62-fc3ce7470b4b.JPG)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+Adicionar URL
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![addurl](https://user-images.githubusercontent.com/36732444/134714736-2cda0d41-646b-4fe9-9ef2-db10111b9b71.JPG)
+
+Edição 
+
+![Edição](https://user-images.githubusercontent.com/36732444/134714688-aa611f3f-555c-47cc-bb4d-171376b34ba1.JPG)
+
+
+
+
