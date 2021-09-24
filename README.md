@@ -26,6 +26,8 @@ Esse projeto consiste em cadastro, edição e delete de URLS, além de cadastrar
 Na página inicial pode-se logar com um usuário fake:
     Ex: admin@gmail.com
          senha: 123
+         
+Para rodar local a cron deve-se usar o comando "php artisan schedule:run" no console.
         
 ## Imagens
 
