@@ -11,7 +11,7 @@ Esse projeto consiste em cadastro, edição e delete de URLS, além de cadastrar
 
 -> Após isso, digite php artisan key:generate
 
--> Crie um banco ded dados MySQL com nome brain
+-> Crie um banco de dados MySQL com nome brain
 
 -> Rode o migration: php artisan migrate:fresh --seed (Roda com seed junto para criar dados mockados já)
 
@@ -25,7 +25,7 @@ Esse projeto consiste em cadastro, edição e delete de URLS, além de cadastrar
 
 Na página inicial pode-se logar com um usuário fake:
     Ex: admin@gmail.com
-        senha: 123
+         senha: 123
         
 ## Imagens
 
