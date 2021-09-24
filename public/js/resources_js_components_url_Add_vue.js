@@ -90,10 +90,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "Authorization": "Bearer ".concat(token)
                   }
                 }).then(function (response) {
+                  alert("Cadastro realizado");
+
                   _this.$router.push({
                     name: "urlList"
                   });
                 })["catch"](function (error) {
+                  alert("Verifique os campos informados e tente novamente");
                   console.log(error);
                 });
 

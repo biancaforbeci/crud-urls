@@ -47,8 +47,10 @@ export default {
             let token = localStorage.getItem('user-token');
             await this.axios.post('/api/url',this.url, { headers: {"Authorization" : `Bearer ${token}`} })
             .then(response=>{
+                alert("Cadastro realizado");
                 this.$router.push({name:"urlList"})
             }).catch(error=>{
+                alert("Verifique os campos informados e tente novamente");
                 console.log(error)
             })
         }

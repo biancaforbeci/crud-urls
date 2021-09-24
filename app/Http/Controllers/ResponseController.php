@@ -4,21 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Jobs\ProcessUrl;
 use Illuminate\Support\Facades\Auth;
+use \Cache;
 
 class ResponseController extends Controller
 {
-   /**
-      * Display a listing of the resource.
-      *
-      * @return \Illuminate\Http\Response
-   */
-   public function index()
-   {
-     ProcessUrl::dispatch(Auth::id());
-   }
-
     /**
      * Display the specified resource.
      *
@@ -27,11 +17,16 @@ class ResponseController extends Controller
      */
     public function show($id)
     {
-      $responses = DB::table('response_urls')
-                  ->join('urls', 'urls.id', '=', 'response_urls.url_id')
-                  ->select('response_urls.*', 'urls.link')
-                  ->where('url_id', '=', $id)
-                  ->get();
+      $responses = Cache::get('responses');
+
+      if (!$responses) {
+        $responses = DB::table('response_urls')
+                    ->join('urls', 'urls.id', '=', 'response_urls.url_id')
+                    ->select('response_urls.*', 'urls.link')
+                    ->where('url_id', '=', $id)
+                    ->get();
+        Cache::put('response', $responses, 1440);
+      }
 
       return response()->json($responses);
     }

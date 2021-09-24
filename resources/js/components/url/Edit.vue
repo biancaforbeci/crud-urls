@@ -55,6 +55,7 @@ export default {
                 this.url.link = link
                 this.url.description = description
             }).catch(error=>{
+                alert("Um erro ocorreu");
                 console.log(error)
             })
         },
@@ -62,8 +63,10 @@ export default {
             let token = localStorage.getItem('user-token');
             await this.axios.post(`/api/url/${this.$route.params.id}`,this.url, { headers: {"Authorization" : `Bearer ${token}`} })
             .then(response=>{
+                alert("Edição realizada com sucesso");
                 this.$router.push({name:"urlList"})
             }).catch(error=>{
+                alert("Um erro ocorreu");
                 console.log(error)
             })
         },

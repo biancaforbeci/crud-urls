@@ -85,7 +85,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     this.getUrls();
-    this.getSendSqs();
   },
   methods: {
     getUrls: function getUrls() {
@@ -127,18 +126,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }).then(function (response) {
           _this2.getUrls();
         })["catch"](function (error) {
+          alert("Um erro ocorreu");
           console.log(error);
         });
       }
-    },
-    getSendSqs: function getSendSqs() {
-      this.axios.get("/api/response", {
-        headers: {
-          "Authorization": "Bearer ".concat(this.token)
-        }
-      }).then(function (response) {})["catch"](function (error) {
-        console.log(error);
-      });
     }
   }
 });
@@ -1035,7 +1026,7 @@ var render = function() {
                             _c(
                               "router-link",
                               {
-                                staticClass: "btn btn-success",
+                                staticClass: "btn btn-primary",
                                 attrs: {
                                   to: {
                                     name: "response",

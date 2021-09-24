@@ -6,6 +6,7 @@ use App\Models\Url;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use \Cache;
 
 class UrlController extends Controller
 {
@@ -16,7 +17,13 @@ class UrlController extends Controller
      */
     public function index()
     {
-       $urls = DB::table('urls')->where('user_id', '=', Auth::id())->get();
+       $urls = Cache::get('urls');
+
+       if (!$urls) {
+         $urls = DB::table('urls')->where('user_id', '=', Auth::id())->get();
+         Cache::put('urls', $urls, 1440);
+       }
+
        return response()->json($urls);
     }
 

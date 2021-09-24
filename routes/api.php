@@ -19,3 +19,4 @@ Route::middleware('auth:api')->group(function () {
   Route::resource('response',App\Http\Controllers\ResponseController::class)->only(['show','index']);
 });
 Route::post('login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::post('/register', [App\Http\Controllers\AuthController::class, 'register'])->name('register');

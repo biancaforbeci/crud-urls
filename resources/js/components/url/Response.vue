@@ -59,6 +59,7 @@ export default {
             .then(response=>{
                 this.responses = response.data;
             }).catch(error=>{
+                alert("Um erro ocorreu");
                 console.log(error)
                 this.urls = []
             })

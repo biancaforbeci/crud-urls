@@ -102,6 +102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (response) {
                   _this.responses = response.data;
                 })["catch"](function (error) {
+                  alert("Um erro ocorreu");
                   console.log(error);
                   _this.urls = [];
                 });

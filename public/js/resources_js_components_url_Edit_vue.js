@@ -100,6 +100,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.url.link = link;
                   _this.url.description = description;
                 })["catch"](function (error) {
+                  alert("Um erro ocorreu");
                   console.log(error);
                 });
 
@@ -127,10 +128,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     "Authorization": "Bearer ".concat(token)
                   }
                 }).then(function (response) {
+                  alert("Edição realizada com sucesso");
+
                   _this2.$router.push({
                     name: "urlList"
                   });
                 })["catch"](function (error) {
+                  alert("Um erro ocorreu");
                   console.log(error);
                 });
 

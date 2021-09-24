@@ -23,7 +23,7 @@
                                     <td>{{ url.link }}</td>
                                     <td>{{ url.description }}</td>
                                     <td>
-                                        <router-link :to='{name:"response",params:{id:url.id}}' class="btn btn-success">Responses</router-link>
+                                        <router-link :to='{name:"response",params:{id:url.id}}' class="btn btn-primary">Responses</router-link>
                                         <router-link :to='{name:"urlEdit",params:{id:url.id}}' class="btn btn-success">Edit</router-link>
                                         <button type="button" @click="deleteUrl(url.id)" class="btn btn-danger">Delete</button>
                                     </td>
@@ -54,7 +54,6 @@ export default {
     },
     created () {
       this.getUrls()
-      this.getSendSqs()
     },
     methods:{
         async getUrls(){
@@ -70,19 +69,12 @@ export default {
             if(confirm("Tem certeza que deseja excluir essa URL ?")){
                 this.axios.delete(`/api/url/${id}`, { headers: {"Authorization" : `Bearer ${this.token}`} })
                 .then(response=>{
-                    this.getUrls()
+                    this.getUrls();
                 }).catch(error=>{
+                    alert("Um erro ocorreu");
                     console.log(error)
                 })
             }
-        },
-        getSendSqs(){
-              this.axios.get(`/api/response`, { headers: {"Authorization" : `Bearer ${this.token}`} })
-              .then(response=>{
-
-              }).catch(error=>{
-                console.log(error)
-              })
         },
     }
 }
