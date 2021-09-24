@@ -48,7 +48,7 @@ export default {
     },
     created () {
       this.getResponse()
-      this.timer = setInterval(this.getUrls, 3000);
+      this.timer = setInterval(this.getResponse, 3000);
     },
     methods:{
         async getResponse(){
