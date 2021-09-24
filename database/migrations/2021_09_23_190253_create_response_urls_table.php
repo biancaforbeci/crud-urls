@@ -14,10 +14,9 @@ class CreateResponseUrlsTable extends Migration
     public function up()
     {
         Schema::create('response_urls', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->smallInteger('status_code')->nullable(true);
             $table->text('response_http')->nullable(true);
-            $table->binary('html')->nullable(true);
             $table->unsignedBigInteger('url_id');
             $table->foreign('url_id')->references('id')->on('urls')->onDelete('cascade');
             $table->timestamps();

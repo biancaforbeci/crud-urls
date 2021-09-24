@@ -63,17 +63,16 @@ class UrlsCron extends Command
         try {
           $responseHttp = new ResponseUrl();
           $responseHttp->status_code = 500;
+          $responseHttp->response_http = "";
 
           if ($error) {
              $responseHttp->status_code = $response->getCode();
+             $responseHttp->response_http = "Erro ao requisitar URL";
           }
 
-          $responseHttp->response_http = "";
-
           if (!$error) {
-              $responseHttp->response_http = json_encode($response->getBody()->getContents());
-              $responseHttp->status_code = $response->getStatusCode();
-              $responseHttp->html = base64_encode($response->getBody(true));
+            $responseHttp->response_http = (string) utf8_encode($response->getBody());
+            $responseHttp->status_code = $response->getStatusCode();
           }
 
           $responseHttp->url_id = $url_id;

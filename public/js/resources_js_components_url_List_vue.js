@@ -996,7 +996,7 @@ var render = function() {
         _c(
           "router-link",
           { staticClass: "btn btn-primary", attrs: { to: { name: "urlAdd" } } },
-          [_vm._v("Create")]
+          [_vm._v("Criar URL")]
         )
       ],
       1

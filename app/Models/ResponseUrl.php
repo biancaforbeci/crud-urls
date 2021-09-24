@@ -11,7 +11,7 @@ class ResponseUrl extends Model
 
     protected $table = 'response_urls';
 
-    protected $fillable = ['status_code','response_http', 'html', 'url_id'];
+    protected $fillable = ['status_code','response_http','url_id'];
 
     public function url() {
         return $this->belongsTo('App\Models\Url');

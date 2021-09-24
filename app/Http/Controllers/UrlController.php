@@ -44,6 +44,13 @@ class UrlController extends Controller
       $url->description = $request->description;
       $url->user_id = Auth::id();
       $url->save();
+
+      $urls = Cache::get('urls');
+
+      if ($urls) {
+        Cache::tags('urls')->flush();
+      }
+
       return response()->json([
           'message'=>'Url Added Successfully!!',
           'url'=>$url

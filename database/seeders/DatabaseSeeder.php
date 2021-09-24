@@ -16,8 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
       $this->call(UsersSeeder::class);
-      User::factory(2)
-              ->has(Url::factory()->count(3), 'urls')
-              ->create();
+      $this->call(UrlSeeder::class);
+      $this->call(ResponsesSeeder::class);
+
+      //Fake users and urls
+      //User::factory(2)
+      //        ->has(Url::factory()->count(3), 'urls')
+      //        ->create();
     }
 }

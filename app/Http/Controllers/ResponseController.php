@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use \Cache;
+use GuzzleHttp\Exception\GuzzleException;
+use App\Models\ResponseUrl;
+use App\Models\Url;
+use GuzzleHttp\Client;
 
 class ResponseController extends Controller
 {

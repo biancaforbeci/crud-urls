@@ -1,7 +1,7 @@
 <template>
     <div class="row">
         <div class="col-12 mb-2 text-end">
-            <router-link :to='{name:"urlAdd"}' class="btn btn-primary">Create</router-link>
+            <router-link :to='{name:"urlAdd"}' class="btn btn-primary">Criar URL</router-link>
         </div>
         <div class="col-12">
             <div class="card">
@@ -15,14 +15,12 @@
                                 <tr>
                                     <th>Status</th>
                                     <th>Response</th>
-                                    <th>Visualização</th>
                                 </tr>
                             </thead>
                             <tbody v-if="responses.length > 0">
                                 <tr v-for="(response,key) in responses" :key="key">
                                     <td>{{ response.status_code }}</td>
-                                    <td>{{ response.response_http }}</td>
-                                    <td>{{ response.html }}</td>
+                                    <td><div v-html="`${response.response_http}`"></div></td>
                                 </tr>
                             </tbody>
                             <tbody v-else>

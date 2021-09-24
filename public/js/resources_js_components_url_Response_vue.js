@@ -68,8 +68,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "urls",
   data: function data() {
@@ -986,7 +984,7 @@ var render = function() {
         _c(
           "router-link",
           { staticClass: "btn btn-primary", attrs: { to: { name: "urlAdd" } } },
-          [_vm._v("Create")]
+          [_vm._v("Criar URL")]
         )
       ],
       1
@@ -1008,9 +1006,13 @@ var render = function() {
                       return _c("tr", { key: key }, [
                         _c("td", [_vm._v(_vm._s(response.status_code))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(response.response_http))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(response.html))])
+                        _c("td", [
+                          _c("div", {
+                            domProps: {
+                              innerHTML: _vm._s("" + response.response_http)
+                            }
+                          })
+                        ])
                       ])
                     }),
                     0
@@ -1040,9 +1042,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Status")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Response")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Visualização")])
+        _c("th", [_vm._v("Response")])
       ])
     ])
   },

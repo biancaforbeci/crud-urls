@@ -24,7 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('urls:cron')->name('urls:cron')->everyMinute()->onOneServer();
+        $schedule->command('urls:cron')->name('urls:cron')->everyMinute()->onSuccess(function () {
+          printf("Finish");
+        })
+        ->onFailure(function () {
+          printf("Erro");
+        });
     }
 
     /**
