@@ -17,11 +17,12 @@ class UrlController extends Controller
      */
     public function index()
     {
-       $urls = Cache::get('urls');
+       $pathCache =  (string) Auth::id() . "-urls";
+       $urls = Cache::get($pathCache);
 
        if (!$urls) {
          $urls = DB::table('urls')->where('user_id', '=', Auth::id())->get();
-         Cache::put('urls', $urls, 1440);
+         Cache::put($pathCache, $urls, 1440);
        }
 
        return response()->json($urls);
@@ -44,11 +45,12 @@ class UrlController extends Controller
       $url->description = $request->description;
       $url->user_id = Auth::id();
       $url->save();
-
-      $urls = Cache::get('urls');
+        
+      $pathCache =  (string) Auth::id() . "-urls";  
+      $urls = Cache::get($pathCache);
 
       if ($urls) {
-        Cache::tags('urls')->flush();
+        Cache::tags($pathCache)->flush();
       }
 
       return response()->json([
