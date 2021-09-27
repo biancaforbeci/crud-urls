@@ -22,6 +22,8 @@ Esse projeto consiste em cadastro, edição e delete de URLS, além de cadastrar
 
 -> Na AWS o link para acesso é: http://control-urls.sa-east-1.elasticbeanstalk.com/, somente a cron que não está habilitada em prod.
    Ambiente em produção foi utilizado AWS Elastic Beanstalk, RDS com CI/CD integrado com integração com GitHub e acompanhamento de deploy com CodePipeline
+   
+   P.S: A aplicação foi removida da AWS hoje (27/09/2021) para evitar custos adicionais na conta. Qualquer dúvida entrar em contato comigo.
 
 Na página inicial pode-se logar com um usuário fake:
     Ex: admin@gmail.com
